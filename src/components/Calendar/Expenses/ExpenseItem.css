@@ -1,0 +1,23 @@
+.expense-item {
+  display: flex;
+  background: rgb(212, 214, 212);
+  border-radius: 10 px;
+  padding: 10px;
+  color: #fff;
+  margin: 20px;
+  justify-content: space-between;
+}
+.expense-item .date {
+}
+.expense-item .text {
+  font-weight: bold;
+  font-size: 14px;
+}
+.expense-item .amount {
+  width: 200px;
+  font-weight: bold;
+  border-radius: 2px solid rgb(194, 194, 236);
+  background: rgb(58, 53, 53);
+  align-self: flex-end;
+  padding: 5px;
+}
