@@ -1,0 +1,8 @@
+.expense-form-control {
+  width: 50%;
+  display: block;
+}
+form {
+  background-color: rgb(220, 194, 243);
+  display: flex;
+}

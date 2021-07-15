@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Expenses from "./components/Calendar/Expenses/Expenses";
-
+import Expenses from "./components/Expenses/Expenses";
+import ExpenseForm from "./components/Expenses/ExpenseForm";
 const expenses = [
   {
     date: new Date(2021, 2, 28),
@@ -27,7 +27,7 @@ const expenses = [
 function App() {
   return (
     <div>
-      <h2>Lets get started</h2>
+      <ExpenseForm />
       <Expenses expenses={expenses} />
     </div>
   );
