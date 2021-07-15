@@ -10,7 +10,7 @@ function ExpenseItem(props) {
     setTitle("updated");
   };
   return (
-    <Card className="expense-item">
+    <Card className="expense-item flex-container align-center">
       <div className="date">
         <CalendarDisplay date={date}></CalendarDisplay>
       </div>

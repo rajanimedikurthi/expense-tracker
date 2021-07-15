@@ -1,11 +1,8 @@
 .card.expense-item {
-  display: flex;
   background-color: rgb(168, 173, 168);
   border-radius: 10px;
-
-  margin: 20px;
   justify-content: space-between;
-  width: 500px;
+  margin: 20px;
 }
 .expense-item .date {
   color: #fff;
@@ -18,7 +15,9 @@
   font-weight: bold;
   border-radius: 2px solid rgb(194, 194, 236);
   background: rgb(58, 53, 53);
-  align-self: flex-end;
   padding: 5px;
   color: #fff;
+}
+.expense-list {
+  background-color: #fff;
 }

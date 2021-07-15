@@ -1,0 +1,14 @@
+.expense-form-control {
+  width: 50%;
+  display: block;
+}
+.expense-form {
+  background-color: rgb(220, 194, 243);
+}
+.expense-form form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  height: 100px;
+}
