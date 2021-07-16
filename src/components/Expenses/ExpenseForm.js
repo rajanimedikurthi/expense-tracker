@@ -48,7 +48,6 @@ const ExpenseForm = (props) => {
       amount: userInput.enteredAmount,
       date: new Date(userInput.enteredDate),
     };
-    debugger;
     if (
       userInput.enteredTitle.trim().length == 0 ||
       userInput.enteredAmount.trim().length == 0 ||
@@ -80,7 +79,9 @@ const ExpenseForm = (props) => {
 
   return (
     <form onSubmit={submitHandler}>
-      <div className="expense-form-control 2-column">
+      <div
+        className={`form-control ${!isTitleValid ? "invalid" : ""} 2-column`}
+      >
         <label style={{ color: !isTitleValid ? "red" : "" }}>Title</label>
         <input
           type="text"
@@ -92,7 +93,9 @@ const ExpenseForm = (props) => {
           onChange={titleChangeHandler}
         />
       </div>
-      <div className="expense-form-control  2-column">
+      <div
+        className={`form-control ${!isAmountValid ? "invalid" : ""} 2-column`}
+      >
         <label style={{ color: !isAmountValid ? "red" : "" }}>Amount</label>
         <input
           style={{
@@ -104,7 +107,7 @@ const ExpenseForm = (props) => {
           onChange={amountChangeHandler}
         />
       </div>
-      <div className="expense-form-control  2-column">
+      <div className={`form-control ${!isDateValid ? "invalid" : ""} 2-column`}>
         <label style={{ color: !isDateValid ? "red" : "" }}>Date</label>
         <input
           style={{
@@ -118,7 +121,7 @@ const ExpenseForm = (props) => {
           onChange={dateChangeHandler}
         />
       </div>
-      <div className="expense-form-actions 2-column">
+      <div className="form-actions 2-column">
         <button onClick={cancelHandler}>cancel</button>
         <button type="submit">Add expenses</button>
       </div>

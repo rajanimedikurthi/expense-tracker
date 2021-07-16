@@ -9,6 +9,23 @@ html {
   margin: 1rem;
   box-shadow: 1px 1px 1px #c1c1be;
 }
+/****************** start of form error styles *********************/
+.form-control.invalid input {
+  border-color: rgb(240, 5, 5);
+  background-color: rgb(250, 128, 114);
+}
+.form-control.invalid label {
+  color: rgb(240, 5, 5);
+}
+.form-control input:focus {
+  outline: none;
+  background-color: #d4c197;
+  border-color: #d89707;
+}
+
+/****************** End of form error styles *********************/
+
+/****************** start of Flex styles *********************/
 .flex-container {
   display: flex;
   padding: 1rem;
@@ -43,3 +60,4 @@ label {
 .justify-flex-end {
   justify-content: flex-end;
 }
+/****************** End of Flex styles *********************/
