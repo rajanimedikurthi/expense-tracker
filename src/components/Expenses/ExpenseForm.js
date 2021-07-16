@@ -16,7 +16,9 @@ const ExpenseForm = (props) => {
     setUserInput((prevState) => {
       return { ...prevState, enteredTitle: value };
     });
-    setTitleValidtiy(true);
+    if (userInput.enteredTitle.trim().length > 0) {
+      setTitleValidtiy(true);
+    }
   };
   const amountChangeHandler = (event) => {
     let value = event.target.value;
@@ -24,7 +26,9 @@ const ExpenseForm = (props) => {
     setUserInput((prevState) => {
       return { ...prevState, enteredAmount: value };
     });
-    setAmountValidtiy(true);
+    if (userInput.enteredAmount.trim().length > 0) {
+      setAmountValidtiy(true);
+    }
   };
   const dateChangeHandler = (event) => {
     let value = event.target.value;
@@ -32,7 +36,10 @@ const ExpenseForm = (props) => {
     setUserInput((prevState) => {
       return { ...prevState, enteredDate: value };
     });
-    setDateValidtiy(true);
+
+    if (userInput.enteredDate.trim().length > 0) {
+      setDateValidtiy(true);
+    }
   };
   const submitHandler = (event) => {
     event.preventDefault();
