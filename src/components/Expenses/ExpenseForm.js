@@ -1,4 +1,21 @@
 import { useState } from "react";
+import Button from "../UI/Button/Button";
+import styled from "styled-components";
+
+const FormControl = styled.div`
+  &.invalid input {
+    border-color: rgb(240, 5, 5);
+    background-color: rgb(250, 128, 114);
+  }
+  &.invalid label {
+    color: rgb(240, 5, 5);
+  }
+  & input:focus {
+    outline: none;
+    background-color: #d4c197;
+    border-color: #d89707;
+  }
+`;
 
 const ExpenseForm = (props) => {
   const [userInput, setUserInput] = useState({
@@ -79,51 +96,36 @@ const ExpenseForm = (props) => {
 
   return (
     <form onSubmit={submitHandler}>
-      <div
-        className={`form-control ${!isTitleValid ? "invalid" : ""} 2-column`}
-      >
-        <label style={{ color: !isTitleValid ? "red" : "" }}>Title</label>
+      <FormControl className={!isTitleValid && "invalid"}>
+        <label>Title</label>
         <input
           type="text"
-          style={{
-            borderColor: !isTitleValid ? "red" : "",
-            backgroundColor: !isTitleValid ? "salmon" : "",
-          }}
           value={userInput.enteredTitle}
           onChange={titleChangeHandler}
         />
-      </div>
-      <div
-        className={`form-control ${!isAmountValid ? "invalid" : ""} 2-column`}
-      >
-        <label style={{ color: !isAmountValid ? "red" : "" }}>Amount</label>
+      </FormControl>
+
+      <FormControl className={!isAmountValid && "invalid"}>
+        <label>Amount</label>
         <input
-          style={{
-            borderColor: !isAmountValid ? "red" : "",
-            backgroundColor: !isAmountValid ? "salmon" : "",
-          }}
           type="number"
           value={userInput.enteredAmount}
           onChange={amountChangeHandler}
         />
-      </div>
-      <div className={`form-control ${!isDateValid ? "invalid" : ""} 2-column`}>
-        <label style={{ color: !isDateValid ? "red" : "" }}>Date</label>
+      </FormControl>
+      <FormControl className={!isDateValid && "invalid"}>
+        <label>Date</label>
         <input
-          style={{
-            borderColor: !isDateValid ? "red" : "",
-            backgroundColor: !isDateValid ? "salmon" : "",
-          }}
           type="date"
           value={userInput.enteredDate}
           min="2019-01-01"
           max="2022-12-31"
           onChange={dateChangeHandler}
         />
-      </div>
+      </FormControl>
       <div className="form-actions 2-column">
-        <button onClick={cancelHandler}>cancel</button>
-        <button type="submit">Add expenses</button>
+        <Button onClick={cancelHandler}>cancel</Button>
+        <Button type="submit">Add expenses</Button>
       </div>
     </form>
   );
