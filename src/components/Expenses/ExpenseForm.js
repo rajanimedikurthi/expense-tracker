@@ -6,6 +6,9 @@ const ExpenseForm = (props) => {
     enteredAmount: "",
     enteredDate: "",
   });
+  const [isTitleValid, setTitleValidtiy] = useState(true);
+  const [isAmountValid, setAmountValidtiy] = useState(true);
+  const [isDateValid, setDateValidtiy] = useState(true);
 
   const titleChangeHandler = (event) => {
     let value = event.target.value;
@@ -13,7 +16,7 @@ const ExpenseForm = (props) => {
     setUserInput((prevState) => {
       return { ...prevState, enteredTitle: value };
     });
-    console.log("title changed " + value);
+    setTitleValidtiy(true);
   };
   const amountChangeHandler = (event) => {
     let value = event.target.value;
@@ -21,7 +24,7 @@ const ExpenseForm = (props) => {
     setUserInput((prevState) => {
       return { ...prevState, enteredAmount: value };
     });
-    console.log("title changed " + value);
+    setAmountValidtiy(true);
   };
   const dateChangeHandler = (event) => {
     let value = event.target.value;
@@ -29,7 +32,7 @@ const ExpenseForm = (props) => {
     setUserInput((prevState) => {
       return { ...prevState, enteredDate: value };
     });
-    console.log("title changed " + value);
+    setDateValidtiy(true);
   };
   const submitHandler = (event) => {
     event.preventDefault();
@@ -38,6 +41,23 @@ const ExpenseForm = (props) => {
       amount: userInput.enteredAmount,
       date: new Date(userInput.enteredDate),
     };
+    debugger;
+    if (
+      userInput.enteredTitle.trim().length == 0 ||
+      userInput.enteredAmount.trim().length == 0 ||
+      userInput.enteredDate.trim().length == 0
+    ) {
+      if (userInput.enteredTitle.trim().length == 0) {
+        setTitleValidtiy(false);
+      }
+      if (userInput.enteredAmount.trim().length == 0) {
+        setAmountValidtiy(false);
+      }
+      if (userInput.enteredDate.trim().length == 0) {
+        setDateValidtiy(false);
+      }
+      return;
+    }
 
     setUserInput({
       enteredAmount: "",
@@ -54,24 +74,36 @@ const ExpenseForm = (props) => {
   return (
     <form onSubmit={submitHandler}>
       <div className="expense-form-control 2-column">
-        <label>Title</label>
+        <label style={{ color: !isTitleValid ? "red" : "" }}>Title</label>
         <input
           type="text"
+          style={{
+            borderColor: !isTitleValid ? "red" : "",
+            backgroundColor: !isTitleValid ? "salmon" : "",
+          }}
           value={userInput.enteredTitle}
           onChange={titleChangeHandler}
         />
       </div>
       <div className="expense-form-control  2-column">
-        <label>Amount</label>
+        <label style={{ color: !isAmountValid ? "red" : "" }}>Amount</label>
         <input
+          style={{
+            borderColor: !isAmountValid ? "red" : "",
+            backgroundColor: !isAmountValid ? "salmon" : "",
+          }}
           type="number"
           value={userInput.enteredAmount}
           onChange={amountChangeHandler}
         />
       </div>
       <div className="expense-form-control  2-column">
-        <label>Date</label>
+        <label style={{ color: !isDateValid ? "red" : "" }}>Date</label>
         <input
+          style={{
+            borderColor: !isDateValid ? "red" : "",
+            backgroundColor: !isDateValid ? "salmon" : "",
+          }}
           type="date"
           value={userInput.enteredDate}
           min="2019-01-01"
