@@ -4,9 +4,10 @@ const ExpenseFilter = (props) => {
     props.onFilterChange(value);
   };
   return (
-    <div className="align-self-flex-end">
+    <div className="flex-container justify-flex-end">
       <label className="display-inline">Filter by year </label>
       <select value={props.selected} onChange={filterChangeHandler}>
+        <option value="2022">2022</option>
         <option value="2021">2021</option>
         <option value="2020">2020</option>
         <option value="2019">2019</option>

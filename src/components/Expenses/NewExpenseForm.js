@@ -1,4 +1,3 @@
-import ExpenseFilter from "./ExpenseFilter";
 import ExpenseForm from "./ExpenseForm";
 import "./NewExpenseForm.css";
 import { useState } from "react";
@@ -10,18 +9,24 @@ const NewExpenseForm = (props) => {
     };
     props.onAddExpenseData(expenseData);
   };
-  const [filteredyear, setYear] = useState("2021");
-  const filterChangeHandler = (year) => {
-    setYear(year);
-    console.log(year);
+  const [bEditMode, setEditMode] = useState(false);
+  const startEditHandler = () => {
+    setEditMode(true);
+  };
+  const stopEditHandler = () => {
+    setEditMode(false);
   };
   return (
     <div className="expense-form flex-container column box">
-      <ExpenseFilter
-        selected={filteredyear}
-        onFilterChange={filterChangeHandler}
-      />
-      <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
+      {!bEditMode && (
+        <button onClick={startEditHandler}> Add new expense form </button>
+      )}
+      {bEditMode && (
+        <ExpenseForm
+          onStopEdit={stopEditHandler}
+          onSaveExpenseData={saveExpenseDataHandler}
+        />
+      )}
     </div>
   );
 };

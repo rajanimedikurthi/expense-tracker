@@ -1,14 +1,9 @@
 import "./ExpenseItem.css";
-import CalendarDisplay from "../Calendar/CalendarDisplay";
-import { useState } from "react";
-import Card from "../Card/Card";
+import CalendarDisplay from "../UI/Calendar/CalendarDisplay";
+import Card from "../UI/Card/Card";
 function ExpenseItem(props) {
-  const { date, amount } = props.item;
-  const [title, setTitle] = useState(props.item.title);
+  const { date, title, amount } = props.item;
 
-  const clickHandler = () => {
-    setTitle("updated");
-  };
   return (
     <Card className="expense-item flex-container align-center">
       <div className="date">
@@ -16,7 +11,6 @@ function ExpenseItem(props) {
       </div>
       <div className="text">{title}</div>
       <div className="amount">{amount}</div>
-      <button onClick={clickHandler}>Change text </button>
     </Card>
   );
 }

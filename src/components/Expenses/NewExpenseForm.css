@@ -3,7 +3,7 @@
   display: block;
 }
 .expense-form {
-  background-color: rgb(220, 194, 243);
+  background-color: #e6e4d8;
 }
 .expense-form form {
   display: flex;
