@@ -49,17 +49,17 @@ const ExpenseForm = (props) => {
       date: new Date(userInput.enteredDate),
     };
     if (
-      userInput.enteredTitle.trim().length == 0 ||
-      userInput.enteredAmount.trim().length == 0 ||
-      userInput.enteredDate.trim().length == 0
+      userInput.enteredTitle.trim().length === 0 ||
+      userInput.enteredAmount.trim().length === 0 ||
+      userInput.enteredDate.trim().length === 0
     ) {
-      if (userInput.enteredTitle.trim().length == 0) {
+      if (userInput.enteredTitle.trim().length === 0) {
         setTitleValidtiy(false);
       }
-      if (userInput.enteredAmount.trim().length == 0) {
+      if (userInput.enteredAmount.trim().length === 0) {
         setAmountValidtiy(false);
       }
-      if (userInput.enteredDate.trim().length == 0) {
+      if (userInput.enteredDate.trim().length === 0) {
         setDateValidtiy(false);
       }
       return;
