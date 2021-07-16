@@ -3,12 +3,17 @@ import Button from "../UI/Button/Button";
 import styled from "styled-components";
 
 const FormControl = styled.div`
-  &.invalid input {
-    border-color: rgb(240, 5, 5);
-    background-color: rgb(250, 128, 114);
+  margin: 0.5rem;
+  & input {
+    display: block;
+    width: 100%;
+    border: 1px solid ${(props) => (props.invalid ? "rgb(240, 5, 5)" : "#ccc")};
+    background-color: ${(props) =>
+      props.invalid ? "rgb(250, 128, 114)" : "transparent"};
   }
-  &.invalid label {
-    color: rgb(240, 5, 5);
+
+  & label {
+    color: ${(props) => (props.invalid ? "rgb(240, 5, 5)" : "inherit")};
   }
   & input:focus {
     outline: none;
@@ -96,7 +101,7 @@ const ExpenseForm = (props) => {
 
   return (
     <form onSubmit={submitHandler}>
-      <FormControl className={!isTitleValid && "invalid"}>
+      <FormControl invalid={!isTitleValid}>
         <label>Title</label>
         <input
           type="text"
@@ -105,7 +110,7 @@ const ExpenseForm = (props) => {
         />
       </FormControl>
 
-      <FormControl className={!isAmountValid && "invalid"}>
+      <FormControl invalid={!isAmountValid}>
         <label>Amount</label>
         <input
           type="number"
@@ -113,7 +118,7 @@ const ExpenseForm = (props) => {
           onChange={amountChangeHandler}
         />
       </FormControl>
-      <FormControl className={!isDateValid && "invalid"}>
+      <FormControl invalid={!isDateValid}>
         <label>Date</label>
         <input
           type="date"
