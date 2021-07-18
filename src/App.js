@@ -1,9 +1,11 @@
 import logo from "./logo.svg";
 import "./App.css";
+import Login from "./components/Expenses/Login/Login";
 import "./Common.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpenseForm from "./components/Expenses/NewExpenseForm";
+import Button from "./components/UI/Button/Button";
 const sample_expenses = [
   {
     id: "e1",
@@ -32,16 +34,36 @@ const sample_expenses = [
 ];
 
 function App() {
+  const [isLogin, setIsLoggedIn] = useState(false);
+  useEffect(() => {
+    const storedUserLoggedInInfo = localStorage.getItem("isLoggedIn");
+    if (storedUserLoggedInInfo == "logged") {
+      setIsLoggedIn(true);
+    }
+  }, []);
   const [expenses, setExpenses] = useState(sample_expenses);
   const addExpenseDataHandler = (data) => {
     setExpenses((prevState) => {
       return [data, ...prevState];
     });
   };
+  const loginHandler = () => {
+    setIsLoggedIn(true);
+  };
+  const logoutHandler = () => {
+    localStorage.removeItem("isLoggedIn");
+    setIsLoggedIn(false);
+  };
   return (
     <div>
-      <NewExpenseForm onAddExpenseData={addExpenseDataHandler} />
-      <Expenses expenses={expenses} />
+      {!isLogin && <Login onLogin={loginHandler}></Login>}
+      {isLogin && (
+        <>
+          <Button onClick={logoutHandler}>Logout</Button>
+          <NewExpenseForm onAddExpenseData={addExpenseDataHandler} />
+          <Expenses expenses={expenses} />{" "}
+        </>
+      )}
     </div>
   );
 }

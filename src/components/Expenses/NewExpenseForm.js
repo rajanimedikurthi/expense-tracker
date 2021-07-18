@@ -1,6 +1,6 @@
 import ExpenseForm from "./ExpenseForm";
 import "./NewExpenseForm.css";
-import Button from "../UI/Button/Button";
+import NewButton from "../UI/Button/NewButton";
 import { useState } from "react";
 const NewExpenseForm = (props) => {
   const saveExpenseDataHandler = (data) => {
@@ -20,7 +20,7 @@ const NewExpenseForm = (props) => {
   return (
     <div className="expense-form flex-container column box">
       {!bEditMode && (
-        <Button onClick={startEditHandler}> Add new expense form </Button>
+        <NewButton onClick={startEditHandler}> Add new expense form </NewButton>
       )}
       {bEditMode && (
         <ExpenseForm
