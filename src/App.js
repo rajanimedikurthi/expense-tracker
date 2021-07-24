@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Login from "./components/Expenses/Login/Login";
 import "./Common.css";
@@ -37,7 +36,7 @@ function App() {
   const [isLogin, setIsLoggedIn] = useState(false);
   useEffect(() => {
     const storedUserLoggedInInfo = localStorage.getItem("isLoggedIn");
-    if (storedUserLoggedInInfo == "logged") {
+    if (storedUserLoggedInInfo === "logged") {
       setIsLoggedIn(true);
     }
   }, []);
